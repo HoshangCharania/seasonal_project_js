@@ -1,0 +1,78 @@
+<html>
+    <head> 
+<title>The Pokemon Game</title>
+    </head>
+<body>
+<style>
+    h3{
+        margin: 50%;
+        width: 200px;
+    }
+    #pikachu{
+        height: 50%;
+        width: 30%;
+        margin-left: 10%;
+    }
+    #pik{
+        margin-left: 10%;
+    }
+    #golem{
+        height: 50%;
+        width: 30%;
+        margin-left: 10%;
+    }
+    #gol{
+         margin-left: 10%;
+    }
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+<script src="pokemon.js"></script>
+<h3>Pokemon</h3>
+<p id="temp">Let's start the battle:</p>
+<p id="test"></p>
+<button id="test" onclick="Pokemon.all()">Show all poke's</button>
+<div id="pokemon">
+<p id="pik">Pikachu's stats: </p>
+<button class="attack" onclick="pikachu.attack(golem)">Attack Golem</button>
+<button class="attack" onclick="pikachu.aliveCheck()">Am I alive?</button>
+<img src="pikachu.jpg" id="pikachu"> 
+</div>
+<div id="pokemon">
+<p id="gol">Golem's stats: </p>
+<button class="attack" onclick="golem.attack(pikachu)">Attack Pikachu</button>
+<button class="attack" onclick="golem.aliveCheck()">Am I alive?</button>
+<img src="golem.png" id="golem">
+</div>
+<script>
+var golem= new Pokemon("Golem","Rock",100,20,60, false);
+var pikachu=new Pokemon("Pikachu","Electric",500,30,40, false);
+document.getElementById("gol").innerHTML+=" Name: "+golem.name+" Type: "+golem.type+" HP: "+golem.hp+" def: "+golem.def+" atk: "+golem.atk+" Legend: "+golem.legend;
+document.getElementById("pik").innerHTML+=" Name: "+pikachu.name+" Type: "+pikachu.type+" HP: "+pikachu.hp+" def: "+pikachu.def+" atk: "+pikachu.atk+" Legend: "+pikachu.legend;
+pikachu.attack(golem); // this is an already inbuilt test case 
+function test(a){
+document.getElementById("test").innerHTML="List of all Pokemon's: "+ a;
+}
+
+//pikachu.attack(golem);
+function getval(){
+    document.getElementById("pik").innerHTML="Pikachu's stats: Name: "+pikachu.name+" Type: "+pikachu.type+" HP: "+pikachu.hp+" def: "+pikachu.def+" atk: "+pikachu.atk+" Legend: "+pikachu.legend;
+    document.getElementById("gol").innerHTML="Golem's stats: Name: "+golem.name+" Type: "+golem.type+" HP: "+golem.hp+" def: "+golem.def+" atk: "+golem.atk+" Legend: "+golem.legend;
+}
+function alive(a){
+    if(a===false)
+        {
+    alert(false);
+        }
+    else if(a===true)
+        {
+            alert(true);
+        }
+}
+function dizzy(){
+    alert("The Pokemon you're trying to attack has no HP.")
+}
+</script>
+</body>
+
+</html>
