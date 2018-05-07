@@ -23,13 +23,14 @@ function Pokemon(name,type,hp,def, atk, legend) { // Initializing a new object
   AllPokes.push(this);
 }
 Pokemon.prototype.attack = function(target) { //attacking a pokemon
-   if(target.hp>0){
+   if((target.hp - (this.atk-target.def))>0){ // To check if it has gone less than 0
    target.hp = target.hp - (this.atk-target.def);
    getval(); // Calling a function on the front end to display
    }
-    else{
+    else if((target.hp - (this.atk-target.def))<=0){
         target.hp=0;
-        dizzy(); // Calling a function on the front end to display
+        getval();
+        dizzy(target.name); // Calling a function on the front end to display
         
     }
 };
@@ -51,6 +52,7 @@ Pokemon.all = function(){ // Returning all the instances created.
         a=JSON.stringify(AllPokes[x])+a;  
         
 }    
+    
     test(a); // Calling a function on the front end to display
     return a;
 }
